@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iniciar sesión</title>
   <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
 
@@ -84,13 +85,30 @@
     .extra-options a:hover {
       text-decoration: underline;
     }
-    @media (max-width: 480px) {
-      .login-form { 
-        max-width: 90%;
-        margin: 50px auto;  
-        padding: 20px;
-      }
-    }
+  @media (max-width: 480px) {
+  .login-form { 
+    max-width: 90%;   /* en lugar de 400px */
+    margin: 50px auto;  
+    padding: 15px;
+  }
+
+  .login-input {
+    font-size: 14px;   /* inputs más pequeños */
+    padding: 8px;
+  }
+
+  .login-button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .netflix-logo {
+    width: 90px;   /* logo más pequeño en móviles */
+    top: 10px;
+    left: 15px;
+  }
+}
+
   </style>
 </head>
 
@@ -145,5 +163,6 @@
 </html>
 
 </html>
+
 
 
